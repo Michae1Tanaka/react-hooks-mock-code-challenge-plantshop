@@ -1,10 +1,13 @@
 import React from "react";
 import PlantCard from "./PlantCard";
+import { v4 as uuid } from "uuid";
 
-function PlantList() {
-  return (
-    <ul className="cards">{/* render PlantCards components in here */}</ul>
-  );
+function PlantList({ displayPlants }) {
+  const plantsMap = displayPlants.map((plant) => {
+    return <PlantCard key={uuid()} plant={plant} />;
+  });
+
+  return <ul className="cards">{plantsMap}</ul>;
 }
 
 export default PlantList;
